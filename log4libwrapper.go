@@ -23,7 +23,7 @@ func (w *gologLoggerWrapper) Error(args ...interface{}) {
 
 func (w *gologLoggerWrapper) Panic(args ...interface{}) {
 	w.delegate.Error(args...)
-	panic(args)
+	panic(args...)
 }
 
 func (w *gologLoggerWrapper) Fatal(args ...interface{}) {
