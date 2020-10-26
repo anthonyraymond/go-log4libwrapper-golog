@@ -9,6 +9,10 @@ type gologLoggerWrapper struct {
 	delegate *golog.Logger
 }
 
+func (w *gologLoggerWrapper) Debug(args ...interface{}) {
+	w.delegate.Debug(args...)
+}
+
 func (w *gologLoggerWrapper) Info(args ...interface{}) {
 	w.delegate.Info(args...)
 }
@@ -23,13 +27,17 @@ func (w *gologLoggerWrapper) Error(args ...interface{}) {
 
 func (w *gologLoggerWrapper) Panic(args ...interface{}) {
 	w.delegate.Error(args...)
-	panic(args...)
+	panic(args)
 }
 
 func (w *gologLoggerWrapper) Fatal(args ...interface{}) {
 	w.delegate.Fatal(args...)
 }
 
+
+func (w *gologLoggerWrapper) Debugf(template string, args ...interface{}) {
+	w.delegate.Debugf(template, args...)
+}
 
 func (w *gologLoggerWrapper) Infof(template string, args ...interface{}) {
 	w.delegate.Infof(template, args...)
